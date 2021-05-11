@@ -1,5 +1,7 @@
 package com.sun.makeupwindow.data.model
 
+import android.content.ContentValues
+import android.database.Cursor
 import android.os.Parcelable
 import com.sun.makeupwindow.utlis.mapToListObject
 import kotlinx.android.parcel.Parcelize
@@ -19,7 +21,7 @@ data class Product(
     val category: String,
     val color: List<Color>
 ) : Parcelable {
-    
+
     constructor(jsonObject: JSONObject) : this(
         jsonObject.getInt(ID),
         jsonObject.getString(BRAND),
@@ -31,8 +33,35 @@ data class Product(
         jsonObject.getString(PRODUCTLINK),
         jsonObject.getString(DESCRIPTION),
         jsonObject.getString(CATEGORY),
-        jsonObject.getJSONArray(COLOR).mapToListObject (::Color)
+        jsonObject.getJSONArray(COLOR).mapToListObject(::Color)
     )
+
+    constructor(curson: Cursor, listColor: List<Color>) : this(
+        curson.getInt(curson.getColumnIndex(ID)),
+        curson.getString(curson.getColumnIndex(BRAND)),
+        curson.getString(curson.getColumnIndex(NAME)),
+        curson.getDouble(curson.getColumnIndex(PRICE)),
+        curson.getString(curson.getColumnIndex(PRICESIGN)),
+        curson.getString(curson.getColumnIndex(CURRENCY)),
+        curson.getString(curson.getColumnIndex(IMAGELINK)),
+        curson.getString(curson.getColumnIndex(PRODUCTLINK)),
+        curson.getString(curson.getColumnIndex(DESCRIPTION)),
+        curson.getString(curson.getColumnIndex(CATEGORY)),
+        listColor
+    )
+
+    fun getContentValues() = ContentValues().apply {
+        put(ID, id)
+        put(BRAND, brand)
+        put(NAME, name)
+        put(PRICE, price)
+        put(PRICESIGN, priceSign)
+        put(CURRENCY, currency)
+        put(IMAGELINK, imageLink)
+        put(PRODUCTLINK, productLink)
+        put(DESCRIPTION, description)
+        put(CATEGORY, category)
+    }
 
     companion object {
         const val ID = "id"
@@ -46,5 +75,6 @@ data class Product(
         const val DESCRIPTION = "description"
         const val CATEGORY = "category"
         const val COLOR = "product_colors"
+        const val TABLE_NAME = "product"
     }
 }
