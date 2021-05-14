@@ -4,7 +4,7 @@ import com.sun.makeupwindow.data.model.Color
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.local.db.AppDatabase
 
-class ColorDAOImpl private constructor(
+class ColorDaoImpl private constructor(
     appDatabase: AppDatabase
 ) : ColorDao {
 
@@ -30,25 +30,23 @@ class ColorDAOImpl private constructor(
     override fun addColor(listColor: List<Color>, idProduct: Int): Boolean {
         var count = 0
         listColor.forEach {
-             if (writableDatabase.insert(
-                     Color.TABLE_NAME,
-                     null,
-                     it.getContentValues(idProduct)
-                 ) > 0)
-                 count++
-
+            if (writableDatabase.insert(
+                    Color.TABLE_NAME,
+                    null,
+                    it.getContentValues(idProduct)
+                ) > 0
+            )
+                count++
         }
         return count == listColor.size + 1
     }
 
     companion object {
-        private var instance: ColorDAOImpl? = null
+        private var instance: ColorDaoImpl? = null
 
-        fun getInstance(database: AppDatabase): ColorDAOImpl =
-            instance ?: synchronized(this) {
-                instance ?: ColorDAOImpl(database).also {
-                    instance = it
-                }
+        fun getInstance(database: AppDatabase): ColorDaoImpl =
+            instance ?: ColorDaoImpl(database).also {
+                instance = it
             }
     }
 }

@@ -27,6 +27,12 @@ class ProductRepository private constructor(
         return local.addProduct(product, callback)
     }
 
+    override fun getProduct(callback: OnDataLoadCallback<List<Product>>) =
+        remote.getProduct(callback)
+
+    override fun getProductById(idProduct: Int, callback: OnDataLoadCallback<Product>) =
+        remote.getProductById(idProduct, callback)
+
     companion object {
         private var instance: ProductRepository? = null
 

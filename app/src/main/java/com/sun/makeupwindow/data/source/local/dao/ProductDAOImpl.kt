@@ -1,11 +1,12 @@
 package com.sun.makeupwindow.data.source.local.dao
 
+import android.content.ContentValues
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.local.db.AppDatabase
 
-class ProductDAOImpl private constructor(
+class ProductDaoImpl private constructor(
     private val appDatabase: AppDatabase
-) : ProductDAO {
+) : ProductDao {
 
     private val writableDatabase = appDatabase.writableDatabase
     private val readableDatabase = appDatabase.readableDatabase
@@ -16,21 +17,23 @@ class ProductDAOImpl private constructor(
             readableDatabase.query(Product.TABLE_NAME, null, null, null, null, null, null)
 
         cursor.use {
-            while (cursor.moveToNext()) {
-                val listColor = ColorDAOImpl.getInstance(appDatabase)
+            it.moveToFirst()
+            while (it.isAfterLast) {
+                val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.ID)))
                 listProduct.add(Product(it, listColor))
+                it.moveToNext()
             }
         }
         return listProduct
     }
 
-    override fun getItemProduct(idproduct: Int): Product {
+    override fun getItemProduct(idProduct: Int): Product {
         val cursor = readableDatabase.query(
             false, Product.TABLE_NAME, null, Product.ID + "= ?",
-            arrayOf(idproduct.toString()), null, null, null, null
+            arrayOf(idProduct.toString()), null, null, null, null
         )
-        val listColor = ColorDAOImpl.getInstance(appDatabase).getColor(idproduct)
+        val listColor = ColorDaoImpl.getInstance(appDatabase).getColor(idProduct)
         return Product(cursor, listColor)
     }
 
@@ -41,10 +44,12 @@ class ProductDAOImpl private constructor(
         val cursor =
             readableDatabase.rawQuery(query, null)
         cursor.use {
-            while (cursor.moveToNext()) {
-                val listColor = ColorDAOImpl.getInstance(appDatabase)
+            it.moveToFirst()
+            while (it.isAfterLast) {
+                val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.ID)))
                 listProduct.add(Product(it, listColor))
+                it.moveToNext()
             }
         }
         return listProduct
@@ -55,16 +60,14 @@ class ProductDAOImpl private constructor(
             Product.TABLE_NAME,
             null,
             product.getContentValues()
-        ) > 0 && ColorDAOImpl.getInstance(appDatabase).addColor(product.color, product.id)
+        ) > 0 && ColorDaoImpl.getInstance(appDatabase).addColor(product.color, product.id)
 
     companion object {
-        private var instance: ProductDAOImpl? = null
+        private var instance: ProductDaoImpl? = null
 
-        fun getInstance(database: AppDatabase): ProductDAOImpl =
-            instance ?: synchronized(this) {
-                instance ?: ProductDAOImpl(database).also {
-                    instance = it
-                }
+        fun getInstance(database: AppDatabase): ProductDaoImpl =
+            instance ?: ProductDaoImpl(database).also {
+                instance = it
             }
     }
 }

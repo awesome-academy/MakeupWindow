@@ -11,5 +11,8 @@ interface ProductDataSource {
         fun addProduct(product: Product, callback: OnDataLoadCallback<Boolean>)
     }
 
-    interface Remote{}
+    interface Remote{
+        fun getProduct(callback: OnDataLoadCallback<List<Product>>)
+        fun getProductById(idproduct: Int, callback: OnDataLoadCallback<Product>)
+    }
 }

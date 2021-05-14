@@ -2,50 +2,48 @@ package com.sun.makeupwindow.data.source.local
 
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.ProductDataSource
-import com.sun.makeupwindow.data.source.local.dao.ProductDAO
+import com.sun.makeupwindow.data.source.local.dao.ProductDao
 import com.sun.makeupwindow.data.source.local.utils.LocalAsyncTask
 import com.sun.makeupwindow.data.source.utils.OnDataLoadCallback
 
 @Suppress("DEPRECATION")
 class ProductLocalDataSource private constructor(
-    private val productDAO: ProductDAO
+    private val productDao: ProductDao
 ) : ProductDataSource.Local {
 
     override fun getProducts(callback: OnDataLoadCallback<List<Product>>) {
         LocalAsyncTask<Unit, List<Product>>(callback) {
-            productDAO.getProduct()
+            productDao.getProduct()
         }.execute(Unit)
     }
 
-    override fun getItemProduct(idproduct: Int, callback: OnDataLoadCallback<Product>) {
-        LocalAsyncTask<Int,Product>(callback) {
-            productDAO.getItemProduct(idproduct)
-        }.execute(idproduct)
+    override fun getItemProduct(productId: Int, callback: OnDataLoadCallback<Product>) {
+        LocalAsyncTask<Int, Product>(callback) {
+            productDao.getItemProduct(productId)
+        }.execute(productId)
     }
 
     override fun getProductsByCategory(
         category: String,
         callback: OnDataLoadCallback<List<Product>>
     ) {
-        LocalAsyncTask<String,List<Product>>(callback){
-            productDAO.getProductByCategory(category)
+        LocalAsyncTask<String, List<Product>>(callback) {
+            productDao.getProductByCategory(category)
         }.execute(category)
     }
 
     override fun addProduct(product: Product, callback: OnDataLoadCallback<Boolean>) {
-        LocalAsyncTask<Product,Boolean>(callback){
-            productDAO.addProduct(product)
+        LocalAsyncTask<Product, Boolean>(callback) {
+            productDao.addProduct(product)
         }.execute(product)
     }
 
     companion object {
         private var instance: ProductLocalDataSource? = null
 
-        fun getInstance(productDAO: ProductDAO): ProductLocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: ProductLocalDataSource(productDAO).also {
-                    instance = it
-                }
+        fun getInstance(productDao: ProductDao) =
+            instance ?: ProductLocalDataSource(productDao).also {
+                instance = it
             }
     }
 }

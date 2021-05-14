@@ -75,6 +75,8 @@ data class Product(
         const val DESCRIPTION = "description"
         const val CATEGORY = "category"
         const val COLOR = "product_colors"
-        const val TABLE_NAME = "product"
+        const val TABLE_NAME = "table_product"
+        const val TABLE_FAVORITE_NAME = "table_favorite"
+        const val ID_FAVORITE_PRODUCT = "id_favorite_product"
     }
 }
