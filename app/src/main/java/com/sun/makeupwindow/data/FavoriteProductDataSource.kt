@@ -4,7 +4,7 @@ import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.utils.OnDataLoadCallback
 
 interface FavoriteProductDataSource {
-    fun getFavoriteProduct(callback: OnDataLoadCallback<List<Product>>)
-    fun insertFavoriteProduct(idProduct: Int, callback: OnDataLoadCallback<Boolean>)
-    fun deleteFavoriteProduct(idProduct: Int, callback: OnDataLoadCallback<Boolean>)
+    fun getProducts(callback: OnDataLoadCallback<List<Product>>)
+    fun insertProduct(id: Int, callback: OnDataLoadCallback<Boolean>)
+    fun deleteProduct(id: Int, callback: OnDataLoadCallback<Boolean>)
 }
