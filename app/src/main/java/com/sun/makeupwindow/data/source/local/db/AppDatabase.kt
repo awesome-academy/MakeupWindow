@@ -30,10 +30,10 @@ class AppDatabase private constructor(
         private const val DATABASE_VERSION = 2
         private const val CREATE_TABLE_PRODUCT =
             "CREATE TABLE " + Product.TABLE_NAME + " ( " +
-                    Product.ID + " INT PRIMARY KEY, " +
+                    Product.ID + " INTEGER PRIMARY KEY, " +
                     Product.BRAND + " TEXT, " +
                     Product.NAME + " TEXT, " +
-                    Product.PRICE + " FLOAT, " +
+                    Product.PRICE + " TEXT, " +
                     Product.PRICESIGN + " TEXT, " +
                     Product.CURRENCY + " TEXT, " +
                     Product.IMAGELINK + " TEXT, " +
@@ -43,19 +43,17 @@ class AppDatabase private constructor(
 
         private const val CREATE_TABLE_PRODUCT_COLOR =
             "CREATE TABLE " + Color.TABLE_NAME + " ( " +
-                    Color.ID + " INT NOT NULL AUTO_INCREMENT, " +
+                    Color.ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                     Color.HEXVALUE + " TEXT, " +
                     Color.COLOURNAME + " TEXT, " +
-                    Color.IDPRODUCT + " INT " +
-                    "FOREIGN KEY (" + Color.IDPRODUCT + ") REFERENCES " + Product.TABLE_NAME + " (" + Product.ID + "), " +
-                    "PRIMARY KEY (" + Color.ID + "));"
+                    Color.IDPRODUCT + " INT, " +
+                    "FOREIGN KEY (" + Color.IDPRODUCT + ") REFERENCES " + Product.TABLE_NAME + " (" + Product.ID + ")); "
 
         private const val CREATE_TABLE_FAVORITE_PRODUCT =
             "CREATE TABLE " + Product.TABLE_FAVORITE_NAME + " ( " +
-                    Product.ID + " INT NOT NULL AUTO_INCREMENT, " +
+                    Product.ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                     Product.ID_FAVORITE_PRODUCT + " INT, " +
-                    "FOREIGN KEY (" + Product.ID_FAVORITE_PRODUCT + ") REFERENCES " + Product.TABLE_NAME + " (" + Product.ID + "), " +
-                    "PRIMARY KEY (" + Product.ID + "));"
+                    "FOREIGN KEY (" + Product.ID_FAVORITE_PRODUCT + ") REFERENCES " + Product.TABLE_NAME + " (" + Product.ID + ")); "
 
         private const val DROP_TABLE_TASK =
             "DROP TABLE IF EXISTS " + Color.TABLE_NAME +

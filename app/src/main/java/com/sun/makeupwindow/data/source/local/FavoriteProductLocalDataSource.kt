@@ -10,22 +10,22 @@ class FavoriteProductLocalDataSource private constructor(
     private val favoriteProductDao: FavoriteProductDao
 ) : FavoriteProductDataSource {
 
-    override fun getFavoriteProduct(callback: OnDataLoadCallback<List<Product>>) {
+    override fun getProducts(callback: OnDataLoadCallback<List<Product>>) {
         LocalAsyncTask<Unit, List<Product>>(callback) {
             favoriteProductDao.getProducts()
         }.execute(Unit)
     }
 
-    override fun insertFavoriteProduct(productId: Int, callback: OnDataLoadCallback<Boolean>) {
+    override fun insertProduct(id: Int, callback: OnDataLoadCallback<Boolean>) {
         LocalAsyncTask<Int, Boolean>(callback) {
-            favoriteProductDao.insertProduct(productId)
-        }.execute(productId)
+            favoriteProductDao.insertProduct(id)
+        }.execute(id)
     }
 
-    override fun deleteFavoriteProduct(productId: Int, callback: OnDataLoadCallback<Boolean>) {
+    override fun deleteProduct(id: Int, callback: OnDataLoadCallback<Boolean>) {
         LocalAsyncTask<Int, Boolean>(callback) {
-            favoriteProductDao.deleteProduct(productId)
-        }.execute(productId)
+            favoriteProductDao.deleteProduct(id)
+        }.execute(id)
     }
 
     companion object {

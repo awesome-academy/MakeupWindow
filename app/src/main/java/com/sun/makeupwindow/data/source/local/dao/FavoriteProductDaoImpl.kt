@@ -21,7 +21,7 @@ class FavoriteProductDaoImpl private constructor(
         val cursor = readableDatabase.rawQuery(query, null)
         cursor.use {
             it.moveToFirst()
-            while (it.isAfterLast) {
+            while (!it.isAfterLast) {
                 val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.TABLE_NAME + "." + Product.ID)))
                 listProduct.add(Product(it, listColor))
@@ -31,9 +31,9 @@ class FavoriteProductDaoImpl private constructor(
         return listProduct
     }
 
-    override fun insertProduct(productId: Int): Boolean {
+    override fun insertProduct(id: Int): Boolean {
         val value = ContentValues().apply {
-            put(Product.ID_FAVORITE_PRODUCT, productId)
+            put(Product.ID_FAVORITE_PRODUCT, id)
         }
         return writableDatabase.insert(
             Product.TABLE_FAVORITE_NAME,
@@ -42,9 +42,9 @@ class FavoriteProductDaoImpl private constructor(
         ) > 0
     }
 
-    override fun deleteProduct(productId: Int): Boolean {
+    override fun deleteProduct(id: Int): Boolean {
         val selection = Product.ID_FAVORITE_PRODUCT + " LIKE ?"
-        val selectionArgs = arrayOf(productId.toString())
+        val selectionArgs = arrayOf(id.toString())
         return writableDatabase.delete(
             Product.TABLE_FAVORITE_NAME,
             selection,

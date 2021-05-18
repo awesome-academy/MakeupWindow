@@ -1,8 +1,8 @@
 package com.sun.makeupwindow.data.source.local.dao
 
-import android.content.ContentValues
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.local.db.AppDatabase
+import com.sun.makeupwindow.utlis.ONE
 
 class ProductDaoImpl private constructor(
     private val appDatabase: AppDatabase
@@ -18,7 +18,7 @@ class ProductDaoImpl private constructor(
 
         cursor.use {
             it.moveToFirst()
-            while (it.isAfterLast) {
+            while (!it.isAfterLast) {
                 val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.ID)))
                 listProduct.add(Product(it, listColor))
@@ -28,12 +28,29 @@ class ProductDaoImpl private constructor(
         return listProduct
     }
 
-    override fun getItemProduct(idProduct: Int): Product {
+    override fun getLastId(): Int {
+        val cursor =
+            readableDatabase.query(
+                false,
+                Product.TABLE_NAME,
+                arrayOf(Product.ID),
+                null,
+                null,
+                null,
+                null,
+                Product.ID + " DESC",
+                ONE
+            )
+        cursor.moveToFirst()
+        return if (cursor.count == 0) 0 else cursor.getInt(cursor.getColumnIndex(Product.ID))
+    }
+
+    override fun getItemProduct(id: Int): Product {
         val cursor = readableDatabase.query(
             false, Product.TABLE_NAME, null, Product.ID + "= ?",
-            arrayOf(idProduct.toString()), null, null, null, null
+            arrayOf(id.toString()), null, null, null, null
         )
-        val listColor = ColorDaoImpl.getInstance(appDatabase).getColor(idProduct)
+        val listColor = ColorDaoImpl.getInstance(appDatabase).getColor(id)
         return Product(cursor, listColor)
     }
 

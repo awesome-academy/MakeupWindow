@@ -1,7 +1,6 @@
 package com.sun.makeupwindow.data.source.local.dao
 
 import com.sun.makeupwindow.data.model.Color
-import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.local.db.AppDatabase
 
 class ColorDaoImpl private constructor(
@@ -11,11 +10,11 @@ class ColorDaoImpl private constructor(
     private val writableDatabase = appDatabase.writableDatabase
     private val readableDatabase = appDatabase.readableDatabase
 
-    override fun getColor(idProduct: Int): List<Color> {
+    override fun getColor(id: Int): List<Color> {
         val listColor = mutableListOf<Color>()
         val cursor = readableDatabase.query(
-            Product.TABLE_NAME, null, Color.IDPRODUCT + " = ?",
-            arrayOf(idProduct.toString()), null, null, null, null
+            Color.TABLE_NAME, null, Color.IDPRODUCT + " = ?",
+            arrayOf(id.toString()), null, null, null, null
         )
         cursor.use {
             it.moveToFirst()

@@ -4,6 +4,6 @@ import com.sun.makeupwindow.data.model.Product
 
 interface FavoriteProductDao {
     fun getProducts(): List<Product>
-    fun insertProduct(productId: Int): Boolean
-    fun deleteProduct(productId: Int): Boolean
+    fun insertProduct(id: Int): Boolean
+    fun deleteProduct(id: Int): Boolean
 }

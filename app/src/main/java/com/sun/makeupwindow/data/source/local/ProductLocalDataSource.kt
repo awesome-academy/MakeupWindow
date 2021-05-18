@@ -17,7 +17,13 @@ class ProductLocalDataSource private constructor(
         }.execute(Unit)
     }
 
-    override fun getItemProduct(productId: Int, callback: OnDataLoadCallback<Product>) {
+    override fun getLastId(callback: OnDataLoadCallback<Int>) {
+        LocalAsyncTask<Unit, Int>(callback) {
+            productDao.getLastId()
+        }.execute(Unit)
+    }
+
+    override fun getProductId(productId: Int, callback: OnDataLoadCallback<Product>) {
         LocalAsyncTask<Int, Product>(callback) {
             productDao.getItemProduct(productId)
         }.execute(productId)
