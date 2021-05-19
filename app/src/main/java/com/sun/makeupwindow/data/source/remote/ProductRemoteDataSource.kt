@@ -25,9 +25,11 @@ class ProductRemoteDataSource private constructor() : ProductDataSource.Remote {
 
         val ja = JSONArray(jsonString)
         for (i in 0 until ja.length()) {
-            products.add(Product(ja.getJSONObject(i)))
+            var product = Product(ja.getJSONObject(i))
+            if (product.price != ZERO)
+                products.add(product)
         }
-        return products
+        return products.reversed()
     }
 
     override fun getProduct(callback: OnDataLoadCallback<List<Product>>) {
@@ -44,9 +46,11 @@ class ProductRemoteDataSource private constructor() : ProductDataSource.Remote {
 
         val ja = JSONArray(jsonString)
         for (i in 0 until ja.length()) {
-            products.add(Product(ja.getJSONObject(i)))
+            var product = Product(ja.getJSONObject(i))
+            if (product.price != ZERO)
+                products.add(product)
         }
-        return products
+        return products.reversed()
     }
 
     override fun getProductById(id: Int, callback: OnDataLoadCallback<Product>) {
@@ -63,6 +67,7 @@ class ProductRemoteDataSource private constructor() : ProductDataSource.Remote {
     }
 
     companion object {
+        private const val ZERO = "0.0"
         private var instance: ProductRemoteDataSource? = null
 
         fun getInstance() = instance ?: ProductRemoteDataSource().also { instance = it }

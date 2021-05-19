@@ -1,0 +1,8 @@
+package com.sun.makeupwindow.base
+
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+
+abstract class BaseViewHolder<T>(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    abstract fun onBind(item: T)
+}
