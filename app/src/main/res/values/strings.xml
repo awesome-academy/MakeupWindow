@@ -3,4 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_category">Category</string>
+    <string name="title_product">Product</string>
+
+    <string name="text_product_name">Name</string>
+    <string name="text_product_price">Price</string>
+
 </resources>
