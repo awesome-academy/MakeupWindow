@@ -6,9 +6,11 @@ import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sun.makeupwindow.R
 import com.sun.makeupwindow.base.BaseActivity
+import com.sun.makeupwindow.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
+
 
     override val layoutResource: Int get() = R.layout.activity_main
 
@@ -22,6 +24,7 @@ class MainActivity : BaseActivity() {
     private val onBottomNavigation =
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.menuHome -> openFragment(HomeFragment.getInstance())
             }
             true
         }
