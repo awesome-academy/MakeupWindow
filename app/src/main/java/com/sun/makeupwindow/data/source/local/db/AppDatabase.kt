@@ -39,7 +39,7 @@ class AppDatabase private constructor(
                     Product.IMAGELINK + " TEXT, " +
                     Product.PRODUCTLINK + " TEXT, " +
                     Product.DESCRIPTION + " TEXT, " +
-                    Product.CATEGORY + " TEXT);"
+                    Product.PRODUCT_TYPE + " TEXT);"
 
         private const val CREATE_TABLE_PRODUCT_COLOR =
             "CREATE TABLE " + Color.TABLE_NAME + " ( " +

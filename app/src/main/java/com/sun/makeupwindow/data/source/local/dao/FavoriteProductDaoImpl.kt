@@ -31,6 +31,15 @@ class FavoriteProductDaoImpl private constructor(
         return listProduct
     }
 
+    override fun checkProduct(id: Int): Boolean{
+        val cursor =
+            readableDatabase.query(
+                false, Product.TABLE_FAVORITE_NAME, null, Product.ID_FAVORITE_PRODUCT + "= ?",
+                arrayOf(id.toString()), null, null, null, null
+            )
+        return if(cursor.count.equals(0)) false else true
+    }
+
     override fun insertProduct(id: Int): Boolean {
         val value = ContentValues().apply {
             put(Product.ID_FAVORITE_PRODUCT, id)

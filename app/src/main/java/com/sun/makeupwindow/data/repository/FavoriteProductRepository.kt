@@ -11,6 +11,10 @@ class FavoriteProductRepository private constructor(
         return local.getProducts(callback)
     }
 
+    override fun checkProduct(id: Int, callback: OnDataLoadCallback<Boolean>) {
+        return local.checkProduct(id, callback)
+    }
+
     override fun insertProduct(id: Int, callback: OnDataLoadCallback<Boolean>) {
         return local.insertProduct(id, callback)
     }

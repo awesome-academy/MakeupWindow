@@ -34,7 +34,7 @@ data class Product(
         jsonObject.getString(IMAGELINK),
         jsonObject.getString(PRODUCTLINK),
         jsonObject.getString(DESCRIPTION),
-        jsonObject.getString(CATEGORY),
+        jsonObject.getString(PRODUCT_TYPE),
         jsonObject.getJSONArray(COLOR).mapToListObject(::Color)
     )
 
@@ -48,7 +48,7 @@ data class Product(
         curson.getString(curson.getColumnIndex(IMAGELINK)),
         curson.getString(curson.getColumnIndex(PRODUCTLINK)),
         curson.getString(curson.getColumnIndex(DESCRIPTION)),
-        curson.getString(curson.getColumnIndex(CATEGORY)),
+        curson.getString(curson.getColumnIndex(PRODUCT_TYPE)),
         listColor
     )
 
@@ -62,7 +62,7 @@ data class Product(
         put(IMAGELINK, imageLink)
         put(PRODUCTLINK, productLink)
         put(DESCRIPTION, description)
-        put(CATEGORY, category)
+        put(PRODUCT_TYPE, category)
     }
 
     companion object {
@@ -75,7 +75,7 @@ data class Product(
         const val IMAGELINK = "image_link"
         const val PRODUCTLINK = "product_link"
         const val DESCRIPTION = "description"
-        const val CATEGORY = "category"
+        const val PRODUCT_TYPE = "product_type"
         const val COLOR = "product_colors"
         const val TABLE_NAME = "table_product"
         const val TABLE_FAVORITE_NAME = "table_favorite"

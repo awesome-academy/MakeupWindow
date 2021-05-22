@@ -8,5 +8,10 @@
 
     <string name="text_product_name">Name</string>
     <string name="text_product_price">Price</string>
-
+    <string name="text_back">Back</string>
+    <string name="text_description">Description</string>
+    <string name="text_tag">Tag</string>
+    <string name="text_color">Product Color</string>
+    <string name="text_related">Related Product</string>
+    <string name="text_color_name">Color</string>
 </resources>
