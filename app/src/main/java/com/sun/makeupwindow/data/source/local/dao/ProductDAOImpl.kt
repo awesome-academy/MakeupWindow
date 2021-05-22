@@ -57,7 +57,7 @@ class ProductDaoImpl private constructor(
     override fun getProductByCategory(category: String): List<Product> {
         val listProduct = mutableListOf<Product>()
         val query =
-            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.CATEGORY} LIKE '%${category}%'"
+            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.PRODUCT_TYPE} LIKE '%${category}%'"
         val cursor =
             readableDatabase.rawQuery(query, null)
         cursor.use {

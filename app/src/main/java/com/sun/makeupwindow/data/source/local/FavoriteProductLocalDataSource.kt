@@ -16,6 +16,12 @@ class FavoriteProductLocalDataSource private constructor(
         }.execute(Unit)
     }
 
+    override fun checkProduct(id: Int, callback: OnDataLoadCallback<Boolean>) {
+        LocalAsyncTask<Int, Boolean>(callback) {
+            favoriteProductDao.checkProduct(id)
+        }.execute(id)
+    }
+
     override fun insertProduct(id: Int, callback: OnDataLoadCallback<Boolean>) {
         LocalAsyncTask<Int, Boolean>(callback) {
             favoriteProductDao.insertProduct(id)
