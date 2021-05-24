@@ -15,4 +15,7 @@
     <string name="text_related">Related Product</string>
     <string name="text_color_name">Color</string>
     <string name="text_buy">Go To Buy</string>
+
+    <string name="msg_insert_success">Added to favorites</string>
+    <string name="msg_delete_success">Removed from favorites</string>
 </resources>
