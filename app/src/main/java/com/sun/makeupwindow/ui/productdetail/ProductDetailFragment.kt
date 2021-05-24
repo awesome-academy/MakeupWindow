@@ -1,12 +1,18 @@
 package com.sun.makeupwindow.ui.productdetail
 
+import android.content.Intent
+import android.net.Uri
+import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import com.sun.makeupwindow.R
 import com.sun.makeupwindow.base.BaseFragment
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.ui.dialog.LoadingDialog
 import com.sun.makeupwindow.utlis.RepositoryFactory
+import com.sun.makeupwindow.utlis.addFragment
 import com.sun.makeupwindow.utlis.loadImage
+import com.sun.makeupwindow.utlis.showToast
 import kotlinx.android.synthetic.main.fragment_detail_product.*
 
 class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
@@ -54,7 +60,31 @@ class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
     }
 
     override fun isFavoriteProduct(check: Boolean) {
-        TODO("Not yet implemented")
+        buttonFavorite.isVisible = check
+        buttonUnFavorite.isVisible = !check
+    }
+
+    override fun initActions() {
+        product?.let {
+            presenter?.getProductFavorite(it.id)
+        }
+
+        buttonFavorite.setOnClickListener {
+            product?.let { item -> presenter?.deleteFavorite(item.id) }
+            it.visibility = View.GONE
+            buttonUnFavorite.visibility = View.VISIBLE
+        }
+
+        buttonUnFavorite.setOnClickListener {
+            product?.let { item -> presenter?.insertFavorite(item.id) }
+            buttonFavorite.visibility = View.VISIBLE
+            it.visibility = View.GONE
+        }
+
+        buttonBuy.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(product?.productLink))
+            startActivity(browserIntent)
+        }
     }
 
     override fun showRelatedProducts(products: List<Product>) {
@@ -62,15 +92,19 @@ class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
     }
 
     override fun isInsertedFavoriteProduct(check: Boolean) {
-        TODO("Not yet implemented")
+        context?.showToast(
+            resources.getString(R.string.msg_insert_success)
+        )
     }
 
     override fun isDeletedFavoriteProduct(check: Boolean) {
-        TODO("Not yet implemented")
+        context?.showToast(
+            resources.getString(R.string.msg_delete_success)
+        )
     }
 
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+        context?.showToast(message)
     }
 
     override fun showLoading() {
@@ -82,6 +116,7 @@ class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
     }
 
     private fun itemRelatedClicked(product: Product) {
+        fragmentManager?.addFragment(R.id.frameContainer, getInstance(product))
     }
 
     private fun initInputData() {

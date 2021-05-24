@@ -31,6 +31,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         presenter?.start()
     }
 
+    override fun initActions() {
+    }
+
     private fun initAdapter() {
         recyclerProduct.adapter = adapterProduct
         recyclerCategory.adapter = adapterCategory
