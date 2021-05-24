@@ -32,12 +32,12 @@
             app:layout_constraintTop_toTopOf="@+id/viewHeader" />
 
         <TextView
-            android:id="@+id/textCategory"
+            android:id="@+id/textProductType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_24"
             android:layout_marginTop="@dimen/dp_16"
-            android:text="@string/title_category"
+            android:text="@string/title_product_type"
             android:textColor="@color/light_blue"
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"
@@ -52,8 +52,8 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textCategory"
-            app:layout_constraintTop_toBottomOf="@+id/textCategory"
+            app:layout_constraintStart_toStartOf="@+id/textProductType"
+            app:layout_constraintTop_toBottomOf="@+id/textProductType"
             app:spanCount="2" />
 
         <TextView

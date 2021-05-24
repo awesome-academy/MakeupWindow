@@ -3,10 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_image_product"
+            app:layout_constraintBottom_toTopOf="@+id/textProductName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewHeader" />
 
         <View
             android:id="@+id/viewHeader"
@@ -63,9 +76,11 @@
             android:background="@android:color/transparent"
             android:contentDescription="@null"
             android:src="@drawable/ic_favorite"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
-            app:layout_constraintEnd_toEndOf="@+id/imageProduct" />
+            android:visibility="visible"
+            android:layout_marginTop="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonBuy"
+            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
 
         <ImageButton
             android:id="@+id/buttonUnFavorite"
@@ -75,8 +90,10 @@
             android:contentDescription="@null"
             android:src="@drawable/ic_un_favorite"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
-            app:layout_constraintEnd_toEndOf="@+id/imageProduct" />
+            android:layout_marginTop="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonBuy"
+            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
 
         <TextView
             android:id="@+id/textProductName"
@@ -104,12 +121,25 @@
             app:layout_constraintTop_toBottomOf="@+id/textProductName"
             tools:text="@tools:sample/lorem" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/bg_button"
+            android:paddingStart="@dimen/dp_20"
+            android:paddingEnd="@dimen/dp_20"
+            android:text="@string/text_buy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textProductPrice"
+            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
+
         <TextView
-            android:id="@+id/textCategory"
+            android:id="@+id/textProductType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_36"
             android:text="@string/text_description"
             android:textColor="@android:color/black"
             android:textSize="@dimen/sp_16"
@@ -117,27 +147,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
 
         <TextView
-            android:id="@+id/textCategoryDetail"
+            android:id="@+id/textProductDetail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_16"
             android:layout_marginTop="@dimen/dp_16"
             android:layout_marginEnd="@dimen/dp_16"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textCategory"
-            app:layout_constraintTop_toBottomOf="@+id/textCategory"
+            app:layout_constraintStart_toStartOf="@+id/textProductType"
+            app:layout_constraintTop_toBottomOf="@+id/buttonBuy"
             tools:lines="5"
             tools:text="@tools:sample/lorem/random" />
-
-        <TextView
-            android:id="@+id/textTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_16"
-            android:text="@string/text_tag"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/sp_16"
-            app:layout_constraintStart_toStartOf="@+id/textCategoryDetail"
-            app:layout_constraintTop_toBottomOf="@+id/textCategoryDetail" />
 
         <TextView
             android:id="@+id/textColor"
@@ -147,8 +167,8 @@
             android:text="@string/text_color"
             android:textColor="@android:color/black"
             android:textSize="@dimen/sp_16"
-            app:layout_constraintStart_toStartOf="@+id/textTag"
-            app:layout_constraintTop_toBottomOf="@+id/textTag" />
+            app:layout_constraintStart_toStartOf="@+id/textProductDetail"
+            app:layout_constraintTop_toBottomOf="@+id/textProductDetail" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerColor"
@@ -159,8 +179,8 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/textColor"
-            app:layout_constraintTop_toBottomOf="@id/textColor"
+            app:layout_constraintStart_toStartOf="@+id/textColor"
+            app:layout_constraintTop_toBottomOf="@+id/textColor"
             tools:listitem="@layout/item_product_color"/>
 
         <TextView

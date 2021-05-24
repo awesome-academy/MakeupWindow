@@ -7,15 +7,31 @@
     app:cardCornerRadius="@dimen/dp_4"
     app:cardElevation="@dimen/dp_4">
 
-        <ImageView
-            android:id="@+id/imageRelatedProduct"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/dp_10"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageRelatedProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_foreground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textRelatedName"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    app:layout_constraintEnd_toEndOf="@id/imageRelatedProduct"
+                    app:layout_constraintStart_toStartOf="@id/imageRelatedProduct"
+                    app:layout_constraintTop_toBottomOf="@+id/imageRelatedProduct"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

@@ -5,7 +5,6 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sun.makeupwindow.R
-import com.sun.makeupwindow.utlis.showToast
 
 abstract class BaseActivity : AppCompatActivity() {
     @get: LayoutRes
@@ -20,8 +19,10 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract fun initComponents()
 
     protected fun openFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frameContainer, fragment)
-            .commit()
-
+        supportFragmentManager.apply {
+            popBackStack()
+            beginTransaction()
+                .replace(R.id.frameContainer, fragment)
+                .commit()
+        }
 }

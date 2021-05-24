@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_favorite">Favorite</string>
-    <string name="title_category">Category</string>
+    <string name="title_product_type">Product Type</string>
     <string name="title_product">Product</string>
 
     <string name="text_product_name">Name</string>
@@ -14,4 +14,5 @@
     <string name="text_color">Product Color</string>
     <string name="text_related">Related Product</string>
     <string name="text_color_name">Color</string>
+    <string name="text_buy">Go To Buy</string>
 </resources>

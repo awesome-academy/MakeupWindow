@@ -62,7 +62,7 @@ class ProductDaoImpl private constructor(
             readableDatabase.rawQuery(query, null)
         cursor.use {
             it.moveToFirst()
-            while (it.isAfterLast) {
+            while (!it.isAfterLast) {
                 val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.ID)))
                 listProduct.add(Product(it, listColor))
