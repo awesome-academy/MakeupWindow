@@ -12,14 +12,10 @@ class ProductDetailPresenter(
     private val favoriteProductRepository: FavoriteProductRepository
 ) : ProductDetailContract.Presenter {
 
-    override fun getProduct(product: Product) {
-        view.showDetailProduct(product)
-    }
-
-    override fun getRelatedProducts(category: String) {
+    override fun getRelatedProducts(productType: String) {
         view.showLoading()
         productRepository.getProductsByCategory(
-            category,
+            productType,
             object : OnDataLoadCallback<List<Product>> {
                 override fun onSuccess(data: List<Product>) {
                     view.showRelatedProducts(data)
@@ -73,6 +69,5 @@ class ProductDetailPresenter(
     }
 
     override fun start() {
-
     }
 }
