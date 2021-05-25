@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dp_2"
-    app:cardCornerRadius="@dimen/dp_4"
+    android:layout_margin="@dimen/dp_8"
+    app:cardCornerRadius="@dimen/dp_10"
     app:cardElevation="@dimen/dp_4">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,43 +12,44 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageProduct"
+            android:id="@+id/imageFavoriteProduct"
             android:layout_width="@dimen/dp_100"
             android:layout_height="@dimen/dp_100"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
             android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textProductName"
-            android:layout_width="wrap_content"
+            android:id="@+id/textName"
+            android:layout_width="@dimen/dp_150"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_20"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:padding="@dimen/dp_8"
             android:text="@string/text_product_name"
             android:textSize="@dimen/sp_18"
-            android:ellipsize="end"
-            android:maxLines="1"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageProduct" />
+            app:layout_constraintStart_toEndOf="@id/imageFavoriteProduct"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textProductprice"
+            android:id="@+id/textPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_20"
             android:padding="@dimen/dp_8"
             android:text="@string/text_product_price"
             android:textColor="@color/light_red"
             android:textSize="@dimen/sp_18"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textProductName" />
+            app:layout_constraintStart_toEndOf="@id/imageFavoriteProduct"
+            app:layout_constraintTop_toBottomOf="@id/textName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

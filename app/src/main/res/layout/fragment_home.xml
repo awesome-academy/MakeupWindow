@@ -27,9 +27,9 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/sp_25"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/viewHeader"
+            app:layout_constraintBottom_toBottomOf="@id/viewHeader"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewHeader" />
+            app:layout_constraintTop_toTopOf="@id/viewHeader" />
 
         <TextView
             android:id="@+id/textProductType"
@@ -42,7 +42,7 @@
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewHeader" />
+            app:layout_constraintTop_toBottomOf="@id/viewHeader" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCategory"
@@ -52,8 +52,8 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textProductType"
-            app:layout_constraintTop_toBottomOf="@+id/textProductType"
+            app:layout_constraintStart_toStartOf="@id/textProductType"
+            app:layout_constraintTop_toBottomOf="@id/textProductType"
             app:spanCount="2" />
 
         <TextView
@@ -65,8 +65,8 @@
             android:textColor="@color/light_blue"
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/recyclerCategory"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerCategory" />
+            app:layout_constraintStart_toStartOf="@id/recyclerCategory"
+            app:layout_constraintTop_toBottomOf="@id/recyclerCategory" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProduct"
@@ -83,7 +83,7 @@
             app:layout_constraintDimensionRatio="1:1.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageProduct"
+            app:layout_constraintTop_toBottomOf="@id/imageProduct"
             app:layout_constraintWidth_percent="0.95"
             app:spanCount="2"
             tools:listitem="@layout/item_product" />
