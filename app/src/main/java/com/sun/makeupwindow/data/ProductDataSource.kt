@@ -6,6 +6,7 @@ import com.sun.makeupwindow.data.source.utils.OnDataLoadCallback
 interface ProductDataSource {
     interface Local{
         fun getProducts(callback: OnDataLoadCallback<List<Product>>)
+        fun getProductsLoadMore(totalItem: Int, callback: OnDataLoadCallback<List<Product>>)
         fun getLastId(callback: OnDataLoadCallback<Int>)
         fun getProductId(id: Int, callback: OnDataLoadCallback<Product>)
         fun getProductsByCategory(category: String, callback: OnDataLoadCallback<List<Product>>)

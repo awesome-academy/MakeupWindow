@@ -8,11 +8,13 @@ import com.sun.makeupwindow.data.model.Product
 interface HomeContract {
     interface View : BaseView {
         fun showProducts(products: List<Product>)
+        fun showProductsLoadMore(products: List<Product>)
         fun showCategories(categories: List<Category>)
     }
 
     interface Presenter : BasePresenter {
         fun getProducts()
+        fun getProductLoadMore(totalItem: Int)
         fun getCategories()
     }
 }

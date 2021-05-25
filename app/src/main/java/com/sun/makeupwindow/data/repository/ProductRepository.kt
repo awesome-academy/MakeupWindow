@@ -12,6 +12,10 @@ class ProductRepository private constructor(
     override fun getProducts(callback: OnDataLoadCallback<List<Product>>) =
         local.getProducts(callback)
 
+    override fun getProductsLoadMore(totalItem: Int, callback: OnDataLoadCallback<List<Product>>) {
+        local.getProductsLoadMore(totalItem, callback)
+    }
+
     override fun getLastId(callback: OnDataLoadCallback<Int>) {
         local.getLastId(callback)
     }

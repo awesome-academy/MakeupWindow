@@ -9,10 +9,7 @@ import com.sun.makeupwindow.R
 import com.sun.makeupwindow.base.BaseFragment
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.ui.dialog.LoadingDialog
-import com.sun.makeupwindow.utlis.RepositoryFactory
-import com.sun.makeupwindow.utlis.addFragment
-import com.sun.makeupwindow.utlis.loadImage
-import com.sun.makeupwindow.utlis.showToast
+import com.sun.makeupwindow.utlis.*
 import kotlinx.android.synthetic.main.fragment_detail_product.*
 
 class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
@@ -67,6 +64,15 @@ class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
     override fun initActions() {
         product?.let {
             presenter?.getProductFavorite(it.id)
+        }
+
+        buttonBackDetail.apply {
+            setOnClickListener {
+                fragmentManager?.removeFragment(
+                    R.id.frameContainer,
+                    this@ProductDetailFragment
+                )
+            }
         }
 
         buttonFavorite.setOnClickListener {

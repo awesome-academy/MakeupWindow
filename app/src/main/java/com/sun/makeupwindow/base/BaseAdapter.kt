@@ -1,16 +1,41 @@
 package com.sun.makeupwindow.base
 
 import androidx.recyclerview.widget.RecyclerView
+import com.sun.makeupwindow.utlis.VIEW_TYPE_ITEM
+import com.sun.makeupwindow.utlis.VIEW_TYPE_LOADING
 
 abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
-    private val items = mutableListOf<T>()
+    private val items = mutableListOf<T?>()
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
-        holder.onBind(items[position])
+        if (holder.itemViewType == VIEW_TYPE_ITEM)
+            items[position]?.let { holder.onBind(it) }
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun getItemAtPosition(position: Int) = items[position]
+
+    fun addLoadingView() {
+        items.add(null)
+        notifyItemInserted(items.size - 1)
+    }
+
+    fun removeLoadingView() {
+        if (items.size != 0) {
+            items.removeAt(items.size - 1)
+            notifyItemRemoved(items.size)
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (items[position] == null) {
+            VIEW_TYPE_LOADING
+        } else {
+            VIEW_TYPE_ITEM
+        }
+    }
 
     fun replaceData(collection: List<T>?) {
         collection?.let {
@@ -39,4 +64,3 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
         notifyItemChanged(position)
     }
 }
-
