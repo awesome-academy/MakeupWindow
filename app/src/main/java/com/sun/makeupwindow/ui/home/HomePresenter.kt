@@ -1,7 +1,5 @@
 package com.sun.makeupwindow.ui.home
 
-import android.util.Log
-import com.sun.makeupwindow.R
 import com.sun.makeupwindow.data.model.Categories
 import com.sun.makeupwindow.data.model.Category
 import com.sun.makeupwindow.data.model.Product
@@ -75,7 +73,6 @@ class HomePresenter(
     private fun setupData() {
         productRepository?.getProduct(object : OnDataLoadCallback<List<Product>> {
             override fun onSuccess(data: List<Product>) {
-                view.showProducts(data)
                 view.hideLoading()
                 insertData(data)
             }
@@ -104,6 +101,18 @@ class HomePresenter(
         checkNewData()
     }
 
+    override fun getProductLoadMore(totalItem: Int) {
+        productRepository?.getProductsLoadMore(totalItem,
+            object : OnDataLoadCallback<List<Product>> {
+                override fun onSuccess(data: List<Product>) {
+                    view.showProductsLoadMore(data)
+                }
+
+                override fun onFail(exception: Exception) {
+                }
+            })
+    }
+
     override fun getCategories() {
         var listCategory = mutableListOf<Category>()
         Categories.values().map {
@@ -115,9 +124,5 @@ class HomePresenter(
     override fun start() {
         getProducts()
         getCategories()
-    }
-
-    companion object {
-        private const val ZERO = 0
     }
 }

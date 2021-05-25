@@ -2,6 +2,7 @@ package com.sun.makeupwindow.data.source.local.dao
 
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.data.source.local.db.AppDatabase
+import com.sun.makeupwindow.utlis.LIMIT
 import com.sun.makeupwindow.utlis.ONE
 
 class ProductDaoImpl private constructor(
@@ -11,21 +12,56 @@ class ProductDaoImpl private constructor(
     private val writableDatabase = appDatabase.writableDatabase
     private val readableDatabase = appDatabase.readableDatabase
 
-    override fun getProduct(): List<Product> {
-        val listProduct = mutableListOf<Product>()
+    override fun getProducts(): List<Product> {
+        val products = mutableListOf<Product>()
         val cursor =
-            readableDatabase.query(Product.TABLE_NAME, null, null, null, null, null, null)
+            readableDatabase.query(
+                Product.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                LIMIT.toString()
+            )
 
         cursor.use {
             it.moveToFirst()
             while (!it.isAfterLast) {
                 val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.ID)))
-                listProduct.add(Product(it, listColor))
+                products.add(Product(it, listColor))
                 it.moveToNext()
             }
         }
-        return listProduct
+        return products
+    }
+
+    override fun getProductsLoadMore(totalItem: Int): List<Product> {
+        val products = mutableListOf<Product>()
+        val cursor =
+            readableDatabase.query(
+                Product.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                totalItem.toString() + "," +  LIMIT.toString()
+            )
+
+        cursor.use {
+            it.moveToFirst()
+            while (!it.isAfterLast) {
+                val listColor = ColorDaoImpl.getInstance(appDatabase)
+                    .getColor(it.getInt(it.getColumnIndex(Product.ID)))
+                products.add(Product(it, listColor))
+                it.moveToNext()
+            }
+        }
+        return products
     }
 
     override fun getLastId(): Int {
@@ -55,9 +91,9 @@ class ProductDaoImpl private constructor(
     }
 
     override fun getProductByCategory(category: String): List<Product> {
-        val listProduct = mutableListOf<Product>()
+        val products = mutableListOf<Product>()
         val query =
-            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.PRODUCT_TYPE} LIKE '%${category}%'"
+            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.PRODUCT_TYPE} LIKE '%${category}%' LIMIT ${LIMIT}"
         val cursor =
             readableDatabase.rawQuery(query, null)
         cursor.use {
@@ -65,11 +101,11 @@ class ProductDaoImpl private constructor(
             while (!it.isAfterLast) {
                 val listColor = ColorDaoImpl.getInstance(appDatabase)
                     .getColor(it.getInt(it.getColumnIndex(Product.ID)))
-                listProduct.add(Product(it, listColor))
+                products.add(Product(it, listColor))
                 it.moveToNext()
             }
         }
-        return listProduct
+        return products
     }
 
     override fun addProduct(product: Product) =
