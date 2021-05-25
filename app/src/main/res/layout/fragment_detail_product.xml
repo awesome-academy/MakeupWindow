@@ -16,10 +16,10 @@
             android:contentDescription="@null"
             android:scaleType="centerCrop"
             android:src="@drawable/bg_image_product"
-            app:layout_constraintBottom_toTopOf="@+id/textProductName"
+            app:layout_constraintBottom_toTopOf="@id/textProductName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewHeader" />
+            app:layout_constraintTop_toBottomOf="@id/viewHeader" />
 
         <View
             android:id="@+id/viewHeader"
@@ -37,9 +37,9 @@
             android:layout_marginStart="@dimen/dp_16"
             android:background="@android:color/transparent"
             android:contentDescription="@null"
-            app:layout_constraintBottom_toBottomOf="@+id/viewHeader"
+            app:layout_constraintBottom_toBottomOf="@id/viewHeader"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewHeader"
+            app:layout_constraintTop_toTopOf="@id/viewHeader"
             app:srcCompat="@drawable/ic_back" />
 
         <TextView
@@ -51,9 +51,9 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonBackDetail"
-            app:layout_constraintStart_toEndOf="@+id/buttonBackDetail"
-            app:layout_constraintTop_toTopOf="@+id/buttonBackDetail" />
+            app:layout_constraintBottom_toBottomOf="@id/buttonBackDetail"
+            app:layout_constraintStart_toEndOf="@id/buttonBackDetail"
+            app:layout_constraintTop_toTopOf="@id/buttonBackDetail" />
 
         <ImageView
             android:id="@+id/imageProduct"
@@ -65,7 +65,7 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewHeader"
+            app:layout_constraintTop_toBottomOf="@id/viewHeader"
             app:layout_constraintWidth_percent="0.28"
             tools:srcCompat="@tools:sample/avatars" />
 
@@ -79,8 +79,8 @@
             android:visibility="visible"
             android:layout_marginTop="@dimen/dp_16"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonBuy"
-            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
+            app:layout_constraintStart_toEndOf="@id/buttonBuy"
+            app:layout_constraintTop_toBottomOf="@id/textProductPrice" />
 
         <ImageButton
             android:id="@+id/buttonUnFavorite"
@@ -92,8 +92,8 @@
             android:visibility="gone"
             android:layout_marginTop="@dimen/dp_16"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonBuy"
-            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
+            app:layout_constraintStart_toEndOf="@id/buttonBuy"
+            app:layout_constraintTop_toBottomOf="@id/textProductPrice" />
 
         <TextView
             android:id="@+id/textProductName"
@@ -104,8 +104,8 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/sp_20"
             app:layout_constraintEnd_toEndOf="@+id/imageProduct"
-            app:layout_constraintStart_toStartOf="@+id/imageProduct"
-            app:layout_constraintTop_toBottomOf="@+id/imageProduct"
+            app:layout_constraintStart_toStartOf="@id/imageProduct"
+            app:layout_constraintTop_toBottomOf="@id/imageProduct"
             tools:text="@tools:sample/lorem" />
 
         <TextView
@@ -116,9 +116,9 @@
             android:gravity="center_horizontal"
             android:textColor="@color/light_red"
             android:textSize="@dimen/sp_20"
-            app:layout_constraintEnd_toEndOf="@+id/imageProduct"
-            app:layout_constraintStart_toStartOf="@+id/imageProduct"
-            app:layout_constraintTop_toBottomOf="@+id/textProductName"
+            app:layout_constraintEnd_toEndOf="@id/imageProduct"
+            app:layout_constraintStart_toStartOf="@id/imageProduct"
+            app:layout_constraintTop_toBottomOf="@id/textProductName"
             tools:text="@tools:sample/lorem" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -131,8 +131,8 @@
             android:paddingEnd="@dimen/dp_20"
             android:text="@string/text_buy"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textProductPrice"
-            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
+            app:layout_constraintStart_toStartOf="@id/textProductPrice"
+            app:layout_constraintTop_toBottomOf="@id/textProductPrice" />
 
         <TextView
             android:id="@+id/textProductType"
@@ -144,7 +144,7 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/sp_16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textProductPrice" />
+            app:layout_constraintTop_toBottomOf="@id/textProductPrice" />
 
         <TextView
             android:id="@+id/textProductDetail"
@@ -154,8 +154,8 @@
             android:layout_marginTop="@dimen/dp_16"
             android:layout_marginEnd="@dimen/dp_16"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textProductType"
-            app:layout_constraintTop_toBottomOf="@+id/buttonBuy"
+            app:layout_constraintStart_toStartOf="@id/textProductType"
+            app:layout_constraintTop_toBottomOf="@id/buttonBuy"
             tools:lines="5"
             tools:text="@tools:sample/lorem/random" />
 
@@ -167,8 +167,8 @@
             android:text="@string/text_color"
             android:textColor="@android:color/black"
             android:textSize="@dimen/sp_16"
-            app:layout_constraintStart_toStartOf="@+id/textProductDetail"
-            app:layout_constraintTop_toBottomOf="@+id/textProductDetail" />
+            app:layout_constraintStart_toStartOf="@id/textProductDetail"
+            app:layout_constraintTop_toBottomOf="@id/textProductDetail" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerColor"
@@ -179,8 +179,8 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textColor"
-            app:layout_constraintTop_toBottomOf="@+id/textColor"
+            app:layout_constraintStart_toStartOf="@id/textColor"
+            app:layout_constraintTop_toBottomOf="@id/textColor"
             tools:listitem="@layout/item_product_color"/>
 
         <TextView
@@ -191,8 +191,8 @@
             android:text="@string/text_related"
             android:textColor="@android:color/black"
             android:textSize="@dimen/sp_16"
-            app:layout_constraintStart_toStartOf="@+id/recyclerColor"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerColor" />
+            app:layout_constraintStart_toStartOf="@id/recyclerColor"
+            app:layout_constraintTop_toBottomOf="@id/recyclerColor" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerRelate"
@@ -202,8 +202,8 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textRelated"
-            app:layout_constraintTop_toBottomOf="@+id/textRelated"
+            app:layout_constraintStart_toStartOf="@id/textRelated"
+            app:layout_constraintTop_toBottomOf="@id/textRelated"
             app:spanCount="1"
             tools:listitem="@layout/item_related_product"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

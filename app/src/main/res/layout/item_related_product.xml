@@ -27,10 +27,10 @@
                     android:layout_width="@dimen/dp_100"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:maxLines="2"
+                    android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="@id/imageRelatedProduct"
                     app:layout_constraintStart_toStartOf="@id/imageRelatedProduct"
-                    app:layout_constraintTop_toBottomOf="@+id/imageRelatedProduct"/>
+                    app:layout_constraintTop_toBottomOf="@id/imageRelatedProduct"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

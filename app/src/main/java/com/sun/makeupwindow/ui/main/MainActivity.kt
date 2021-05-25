@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sun.makeupwindow.R
 import com.sun.makeupwindow.base.BaseActivity
+import com.sun.makeupwindow.ui.favorite.FavoriteFragment
 import com.sun.makeupwindow.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,6 +26,7 @@ class MainActivity : BaseActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menuHome -> openFragment(HomeFragment.getInstance())
+                R.id.menuFavorite -> openFragment(FavoriteFragment.getInstance())
             }
             true
         }
