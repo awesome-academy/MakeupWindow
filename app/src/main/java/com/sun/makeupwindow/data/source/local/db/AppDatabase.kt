@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.sun.makeupwindow.data.model.Color
 import com.sun.makeupwindow.data.model.Product
+import java.io.FileOutputStream
 
 class AppDatabase private constructor(
     context: Context,
@@ -26,7 +27,7 @@ class AppDatabase private constructor(
     }
 
     companion object {
-        private const val DATABASE_NAME = "makeup.db"
+        const val DATABASE_NAME = "makeup.db"
         private const val DATABASE_VERSION = 2
         private const val CREATE_TABLE_PRODUCT =
             "CREATE TABLE " + Product.TABLE_NAME + " ( " +
@@ -60,6 +61,22 @@ class AppDatabase private constructor(
                     ";DROP TABLE IF EXISTS " + Product.TABLE_FAVORITE_NAME +
                     ";DROP TABLE IF EXISTS " + Product.TABLE_NAME
 
+        fun copyDatabase(context: Context) {
+            val dbFile = context.getDatabasePath(AppDatabase.DATABASE_NAME)
+            if (!dbFile.exists()) {
+                val assetdb = context.assets.open(AppDatabase.DATABASE_NAME)
+                val currentDB = FileOutputStream(dbFile)
+
+                val buffer = ByteArray(1024)
+                while (assetdb.read(buffer) > 0) {
+                    currentDB.write(buffer)
+                }
+
+                currentDB.flush()
+                currentDB.close()
+                assetdb.close()
+            }
+        }
 
         private var instance: AppDatabase? = null
 

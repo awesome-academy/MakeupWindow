@@ -49,7 +49,7 @@ class ProductDaoImpl private constructor(
                 null,
                 null,
                 null,
-                totalItem.toString() + "," +  LIMIT.toString()
+                totalItem.toString() + "," + LIMIT.toString()
             )
 
         cursor.use {
@@ -114,6 +114,25 @@ class ProductDaoImpl private constructor(
             null,
             product.getContentValues()
         ) > 0 && ColorDaoImpl.getInstance(appDatabase).addColor(product.color, product.id)
+
+    override fun searchProductsByWord(wordSearch: String): List<Product> {
+        val products = mutableListOf<Product>()
+        val query =
+            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.NAME} LIKE '%${wordSearch}%' OR" +
+                    " ${Product.DESCRIPTION} LIKE '%${wordSearch}%' LIMIT ${LIMIT}"
+        val cursor =
+            readableDatabase.rawQuery(query, null)
+        cursor.use {
+            it.moveToFirst()
+            while (!it.isAfterLast) {
+                val listColor = ColorDaoImpl.getInstance(appDatabase)
+                    .getColor(it.getInt(it.getColumnIndex(Product.ID)))
+                products.add(Product(it, listColor))
+                it.moveToNext()
+            }
+        }
+        return products
+    }
 
     companion object {
         private var instance: ProductDaoImpl? = null

@@ -11,10 +11,11 @@ interface ProductDataSource {
         fun getProductId(id: Int, callback: OnDataLoadCallback<Product>)
         fun getProductsByCategory(category: String, callback: OnDataLoadCallback<List<Product>>)
         fun addProduct(product: Product, callback: OnDataLoadCallback<Boolean>)
+        fun searchProducts(wordSearch: String, callback: OnDataLoadCallback<List<Product>>)
     }
 
     interface Remote{
-        fun getProductFirst(callback: OnDataLoadCallback<List<Product>>)
+        fun getFirstProduct(callback: OnDataLoadCallback<List<Product>>)
         fun getProduct(callback: OnDataLoadCallback<List<Product>>)
         fun getProductById(id: Int, callback: OnDataLoadCallback<Product>)
     }

@@ -50,6 +50,15 @@ class ProductLocalDataSource private constructor(
         }.execute(product)
     }
 
+    override fun searchProducts(
+        wordSearch: String,
+        callback: OnDataLoadCallback<List<Product>>
+    ) {
+        LocalAsyncTask<String, List<Product>>(callback) {
+            productDao.searchProductsByWord(wordSearch)
+        }.execute(wordSearch)
+    }
+
     companion object {
         private var instance: ProductLocalDataSource? = null
 

@@ -35,8 +35,15 @@ class ProductRepository private constructor(
         return local.addProduct(product, callback)
     }
 
-    override fun getProductFirst(callback: OnDataLoadCallback<List<Product>>) =
-        remote.getProductFirst(callback)
+    override fun searchProducts(
+        wordSearch: String,
+        callback: OnDataLoadCallback<List<Product>>
+    ) {
+        return local.searchProducts(wordSearch, callback)
+    }
+
+    override fun getFirstProduct(callback: OnDataLoadCallback<List<Product>>) =
+        remote.getFirstProduct(callback)
 
     override fun getProduct(callback: OnDataLoadCallback<List<Product>>) {
         remote.getProduct(callback)
