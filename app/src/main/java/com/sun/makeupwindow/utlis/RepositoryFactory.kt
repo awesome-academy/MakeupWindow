@@ -12,6 +12,7 @@ import com.sun.makeupwindow.data.source.remote.ProductRemoteDataSource
 
 object RepositoryFactory {
     fun getRepository(context: Context): ProductRepository {
+        AppDatabase.copyDatabase(context)
         val appDatabase = AppDatabase.getInstance(context)
         val productDaoImpl = ProductDaoImpl.getInstance(appDatabase)
         val local = ProductLocalDataSource.getInstance(productDaoImpl)

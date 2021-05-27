@@ -8,6 +8,7 @@ import com.sun.makeupwindow.R
 import com.sun.makeupwindow.base.BaseActivity
 import com.sun.makeupwindow.ui.favorite.FavoriteFragment
 import com.sun.makeupwindow.ui.home.HomeFragment
+import com.sun.makeupwindow.ui.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -27,6 +28,7 @@ class MainActivity : BaseActivity() {
             when (menuItem.itemId) {
                 R.id.menuHome -> openFragment(HomeFragment.getInstance())
                 R.id.menuFavorite -> openFragment(FavoriteFragment.getInstance())
+                R.id.menuSearch -> openFragment(SearchFragment.getInstance())
             }
             true
         }

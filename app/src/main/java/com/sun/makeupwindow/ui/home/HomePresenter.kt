@@ -31,7 +31,7 @@ class HomePresenter(
     }
 
     private fun getDataFirst() {
-        productRepository?.getProductFirst(object : OnDataLoadCallback<List<Product>> {
+        productRepository?.getFirstProduct(object : OnDataLoadCallback<List<Product>> {
             override fun onSuccess(data: List<Product>) {
                 view.showProducts(data)
                 view.hideLoading()

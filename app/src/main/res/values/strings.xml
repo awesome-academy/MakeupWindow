@@ -5,6 +5,8 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_product_type">Product Type</string>
     <string name="title_product">Product</string>
+    <string name="title_search_product">Search Product</string>
+    <string name="title_result">Result</string>
 
     <string name="text_product_name">Name</string>
     <string name="text_product_price">Price</string>

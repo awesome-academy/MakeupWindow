@@ -11,7 +11,7 @@ import org.json.JSONObject
 
 class ProductRemoteDataSource private constructor() : ProductDataSource.Remote {
 
-    override fun getProductFirst(callback: OnDataLoadCallback<List<Product>>) {
+    override fun getFirstProduct(callback: OnDataLoadCallback<List<Product>>) {
         RemoteAsyncTask(callback) {
             getProductListFirst()
         }.execute()
