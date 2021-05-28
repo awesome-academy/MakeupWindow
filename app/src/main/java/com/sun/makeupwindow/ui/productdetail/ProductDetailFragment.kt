@@ -122,7 +122,7 @@ class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
     }
 
     private fun itemRelatedClicked(product: Product) {
-        fragmentManager?.addFragment(R.id.frameContainer, getInstance(product))
+        fragmentManager?.addFragment(R.id.frameContainer, newInstance(product))
     }
 
     private fun initInputData() {
@@ -138,7 +138,7 @@ class ProductDetailFragment : BaseFragment(), ProductDetailContract.View {
     companion object {
         private const val BUNDLE_PRODUCT_DETAIL = "BUNDLE_PRODUCT_DETAIL"
 
-        fun getInstance(product: Product) = ProductDetailFragment().apply {
+        fun newInstance(product: Product) = ProductDetailFragment().apply {
             arguments = bundleOf(BUNDLE_PRODUCT_DETAIL to product)
         }
     }

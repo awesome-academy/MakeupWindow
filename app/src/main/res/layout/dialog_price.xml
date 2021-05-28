@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioPriceAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_all"
+            android:checked="true"
+            android:textSize="@dimen/dp_20" />
+
+        <RadioButton
+            android:id="@+id/radioPrice1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_price_1"
+            android:textSize="@dimen/sp_20" />
+
+        <RadioButton
+            android:id="@+id/radioPrice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_price_2"
+            android:textSize="@dimen/dp_20" />
+
+        <RadioButton
+            android:id="@+id/radioPrice3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_price_3"
+            android:textSize="@dimen/dp_20" />
+
+        <RadioButton
+            android:id="@+id/radioPrice4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_price_4"
+            android:textSize="@dimen/dp_20" />
+
+        <RadioButton
+            android:id="@+id/radioPrice5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_price_5"
+            android:textSize="@dimen/dp_20" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_40"
+        android:background="@drawable/bg_button"
+        android:text="@string/text_cancel"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_40"
+        android:background="@drawable/bg_button"
+        android:text="@string/text_apply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

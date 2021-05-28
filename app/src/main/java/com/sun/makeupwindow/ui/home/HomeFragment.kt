@@ -9,6 +9,7 @@ import com.sun.makeupwindow.data.model.Category
 import com.sun.makeupwindow.data.model.Product
 import com.sun.makeupwindow.ui.dialog.LoadingDialog
 import com.sun.makeupwindow.ui.productdetail.ProductDetailFragment
+import com.sun.makeupwindow.ui.producttype.ProductTypeFragment
 import com.sun.makeupwindow.utlis.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -120,11 +121,15 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     private fun itemProductClicked(product: Product) {
         fragmentManager?.addFragment(
             R.id.frameContainer,
-            ProductDetailFragment.getInstance(product)
+            ProductDetailFragment.newInstance(product)
         )
     }
 
     private fun itemCategoryClicked(category: Category) {
+        fragmentManager?.addFragment(
+            R.id.frameContainer,
+            ProductTypeFragment.newInstance(category)
+        )
     }
 
     companion object {

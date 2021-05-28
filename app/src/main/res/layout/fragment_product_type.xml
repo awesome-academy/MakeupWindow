@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/viewHeader"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/buttonBackDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@id/viewHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/viewHeader"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/textBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:text="@string/text_back"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/buttonBackDetail"
+            app:layout_constraintStart_toEndOf="@id/buttonBackDetail"
+            app:layout_constraintTop_toTopOf="@id/buttonBackDetail" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_price"
+            android:layout_marginTop="@dimen/sp_20"
+            android:background="@drawable/bg_button"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="@dimen/dp_80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewHeader"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_20"
+            android:layout_marginEnd="@dimen/dp_80"
+            android:text="@string/text_sort"
+            android:background="@drawable/bg_button"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewHeader"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerProductType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_20"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonPrice"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_product"
+            app:spanCount="2"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

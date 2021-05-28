@@ -26,10 +26,8 @@ data class Product(
         jsonObject.getInt(ID),
         jsonObject.getString(BRAND),
         jsonObject.getString(NAME),
-        jsonObject.getString(PRICE),
-        if (jsonObject.getString(PRICESIGN) == NULL) PRICESIGN_DEFAULT else jsonObject.getString(
-            PRICESIGN
-        ),
+        if (jsonObject.getString(PRICE) == NULL) PRICE_DEFAULT else jsonObject.getString(PRICE),
+        if (jsonObject.getString(PRICESIGN) == NULL) PRICESIGN_DEFAULT else jsonObject.getString(PRICESIGN),
         jsonObject.getString(CURRENCY),
         jsonObject.getString(IMAGELINK),
         jsonObject.getString(PRODUCTLINK),
@@ -82,5 +80,6 @@ data class Product(
         const val ID_FAVORITE_PRODUCT = "id_favorite_product"
         const val NULL = "null"
         const val PRICESIGN_DEFAULT = "$"
+        const val PRICE_DEFAULT = "0.0"
     }
 }

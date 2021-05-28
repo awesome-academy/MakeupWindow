@@ -50,7 +50,7 @@ class FavoriteFragment : BaseFragment(), FavoriteContract.View {
     private fun itemFavoriteClicked(product: Product) {
         fragmentManager?.addFragment(
             R.id.frameContainer,
-            ProductDetailFragment.getInstance(product)
+            ProductDetailFragment.newInstance(product)
         )
     }
 

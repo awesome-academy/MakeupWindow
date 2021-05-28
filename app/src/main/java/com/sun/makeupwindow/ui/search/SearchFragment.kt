@@ -52,7 +52,7 @@ class SearchFragment : BaseFragment(), SearchContract.View {
     private fun itemProductClicked(product: Product) {
         fragmentManager?.addFragment(
             R.id.frameContainer,
-            ProductDetailFragment.getInstance(product)
+            ProductDetailFragment.newInstance(product)
         )
     }
 
