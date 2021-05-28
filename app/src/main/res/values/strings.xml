@@ -17,6 +17,20 @@
     <string name="text_related">Related Product</string>
     <string name="text_color_name">Color</string>
     <string name="text_buy">Go To Buy</string>
+    <string name="text_price">Price</string>
+    <string name="text_sort">Sort</string>
+    <string name="text_all">All</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_apply">Apply</string>
+    <string name="text_price_1">&lt; 5$</string>
+    <string name="text_price_2">5 - 10$</string>
+    <string name="text_price_3">10 - 15$</string>
+    <string name="text_price_4">15 - 20$</string>
+    <string name="text_price_5">> 20$</string>
+    <string name="text_new">New</string>
+    <string name="text_old">Old</string>
+    <string name="text_increase">Increase</string>
+    <string name="text_decrease">Decrease</string>
 
     <string name="msg_insert_success">Added to favorites</string>
     <string name="msg_delete_success">Removed from favorites</string>

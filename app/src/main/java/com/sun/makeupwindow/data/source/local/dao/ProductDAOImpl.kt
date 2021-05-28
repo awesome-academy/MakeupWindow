@@ -93,7 +93,7 @@ class ProductDaoImpl private constructor(
     override fun getProductByCategory(category: String): List<Product> {
         val products = mutableListOf<Product>()
         val query =
-            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.PRODUCT_TYPE} LIKE '%${category}%' LIMIT ${LIMIT}"
+            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.PRODUCT_TYPE} LIKE '%${category}%'"
         val cursor =
             readableDatabase.rawQuery(query, null)
         cursor.use {
@@ -118,8 +118,8 @@ class ProductDaoImpl private constructor(
     override fun searchProductsByWord(wordSearch: String): List<Product> {
         val products = mutableListOf<Product>()
         val query =
-            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.NAME} LIKE '%${wordSearch}%' OR" +
-                    " ${Product.DESCRIPTION} LIKE '%${wordSearch}%' LIMIT ${LIMIT}"
+            "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.NAME} LIKE '%${wordSearch}%' OR " +
+                    "${Product.DESCRIPTION} LIKE '%${wordSearch}%' LIMIT ${LIMIT}"
         val cursor =
             readableDatabase.rawQuery(query, null)
         cursor.use {
