@@ -10,4 +10,6 @@ interface ProductDao {
     fun getProductByCategory(category: String): List<Product>
     fun addProduct(product: Product): Boolean
     fun searchProductsByWord(wordSearch: String): List<Product>
+    fun searchProducts(wordSearch: String, totalItem: Int?): List<Product>
+    fun numberOfProducts(wordSearch: String): Int
 }

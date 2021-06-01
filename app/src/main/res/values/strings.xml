@@ -31,6 +31,7 @@
     <string name="text_old">Old</string>
     <string name="text_increase">Increase</string>
     <string name="text_decrease">Decrease</string>
+    <string name="text_status_product">No Products</string>
 
     <string name="msg_insert_success">Added to favorites</string>
     <string name="msg_delete_success">Removed from favorites</string>

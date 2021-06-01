@@ -13,46 +13,32 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioPriceAll"
+            android:id="@+id/radioSortNew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_all"
+            android:text="@string/text_new"
             android:checked="true"
             android:textSize="@dimen/sp_20" />
 
         <RadioButton
-            android:id="@+id/radioPrice1"
+            android:id="@+id/radioSortOld"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_price_1"
+            android:text="@string/text_old"
             android:textSize="@dimen/sp_20" />
 
         <RadioButton
-            android:id="@+id/radioPrice2"
+            android:id="@+id/radioSortIncrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_price_2"
+            android:text="@string/text_increase"
             android:textSize="@dimen/sp_20" />
 
         <RadioButton
-            android:id="@+id/radioPrice3"
+            android:id="@+id/radioSortDecrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_price_3"
-            android:textSize="@dimen/sp_20" />
-
-        <RadioButton
-            android:id="@+id/radioPrice4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_price_4"
-            android:textSize="@dimen/sp_20" />
-
-        <RadioButton
-            android:id="@+id/radioPrice5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_price_5"
+            android:text="@string/text_decrease"
             android:textSize="@dimen/sp_20" />
     </RadioGroup>
 
@@ -61,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_40"
-      android:layout_marginVertical="@dimen/dp_10"
+        android:layout_marginVertical="@dimen/dp_10"
         android:background="@drawable/bg_button"
         android:text="@string/text_cancel"
         app:layout_constraintBottom_toBottomOf="parent"

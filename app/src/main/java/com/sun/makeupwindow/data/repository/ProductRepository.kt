@@ -42,6 +42,17 @@ class ProductRepository private constructor(
         return local.searchProducts(wordSearch, callback)
     }
 
+    override fun searchProductLoadMore(
+        search: Map<String, Int>,
+        callback: OnDataLoadCallback<List<Product>>
+    ) {
+        return local.searchProductLoadMore(search, callback)
+    }
+
+    override fun numberOfProducts(wordSearch: String, callback: OnDataLoadCallback<Int>) {
+        return local.numberOfProducts(wordSearch, callback)
+    }
+
     override fun getFirstProduct(callback: OnDataLoadCallback<List<Product>>) =
         remote.getFirstProduct(callback)
 
