@@ -12,6 +12,8 @@ interface ProductDataSource {
         fun getProductsByCategory(category: String, callback: OnDataLoadCallback<List<Product>>)
         fun addProduct(product: Product, callback: OnDataLoadCallback<Boolean>)
         fun searchProducts(wordSearch: String, callback: OnDataLoadCallback<List<Product>>)
+        fun searchProductLoadMore(search: Map<String,Int>, callback: OnDataLoadCallback<List<Product>>)
+        fun numberOfProducts(wordSearch: String, callback: OnDataLoadCallback<Int>)
     }
 
     interface Remote{

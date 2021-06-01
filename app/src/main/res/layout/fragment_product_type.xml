@@ -72,6 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sp_20"
+            android:background="@color/pink"
             android:foregroundGravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,5 +80,18 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_product"
             app:spanCount="2"/>
+
+        <TextView
+            android:id="@+id/textStatusProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_status_product"
+            android:textSize="@dimen/sp_25"
+            android:visibility="invisible"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/dp_200"
+            app:layout_constraintTop_toBottomOf="@id/viewHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

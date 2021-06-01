@@ -94,8 +94,8 @@ class ProductDaoImpl private constructor(
         val products = mutableListOf<Product>()
         val query =
             "SELECT * FROM ${Product.TABLE_NAME} WHERE ${Product.PRODUCT_TYPE} LIKE '%${category}%'"
-        val cursor =
-            readableDatabase.rawQuery(query, null)
+        val cursor = readableDatabase.rawQuery(query, null)
+
         cursor.use {
             it.moveToFirst()
             while (!it.isAfterLast) {
@@ -132,6 +132,39 @@ class ProductDaoImpl private constructor(
             }
         }
         return products
+    }
+
+    override fun searchProducts(wordSearch: String, totalItem: Int?): List<Product> {
+        val products = mutableListOf<Product>()
+        val query = "SELECT * FROM ${Product.TABLE_NAME} " +
+                    "WHERE ${Product.NAME} " +
+                    "LIKE '%${wordSearch}%' " +
+                    "OR ${Product.DESCRIPTION} " +
+                    "LIKE '%${wordSearch}%' " +
+                    "LIMIT ${totalItem} , ${LIMIT}"
+
+        val cursor = readableDatabase.rawQuery(query, null)
+
+        cursor.use {
+            it.moveToFirst()
+            while (!it.isAfterLast) {
+                val listColor = ColorDaoImpl.getInstance(appDatabase)
+                    .getColor(it.getInt(it.getColumnIndex(Product.ID)))
+                products.add(Product(it, listColor))
+                it.moveToNext()
+            }
+        }
+        return products
+    }
+
+    override fun numberOfProducts(wordSearch: String): Int {
+        val query = "SELECT * FROM ${Product.TABLE_NAME} " +
+                    "WHERE ${Product.NAME} " +
+                    "LIKE '%${wordSearch}%' " +
+                    "OR ${Product.DESCRIPTION} " +
+                    "LIKE '%${wordSearch}%'"
+        val cursor = readableDatabase.rawQuery(query, null)
+        return cursor.count
     }
 
     companion object {
